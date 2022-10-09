@@ -1,0 +1,48 @@
+import pandas as pd #pandas kütüphanesi ekleniyor.
+#Table oluşturmak için gerek datalar giriliyor.
+data = {
+    'name': ['Ahmet', 'Selin', 'Rüzgar', 'Sedat', 'Zehra', 'Deniz', 'Suat'],
+    'city': ['İstanbul', 'Antalya', 'Trabzon', 'Sivas',
+              'Ankara', 'Bursa', 'İzmir'],
+        'age': [41, 28, 33, 34, 38, 31, 37],
+        'py-score': [78.0, 79.0, 66.0, 80.0, 59.0, 61.0, 77.0]
+ }
+
+row_labels = [101, 102, 103, 104, 105, 106, 107]
+df = pd.DataFrame(data=data, index=row_labels)
+df
+#Grafik çizimi için gerekli kütüphane ekleniyor.
+import matplotlib.pyplot as plt
+%matplotlib inline
+labels = ["Ahmet","Selin", "Rüzgar", "Sedat", "Zehra", "Deniz","Suat"] #Her bir parçanın adı
+sizes = [78.0, 79.0, 66.0, 80.0, 59.0, 61.0, 77.0] #Her bir parçanın büyüklüğü
+colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue','red', 'blue', 'orange'] #Her bir parçanın rengi
+explode = (0, 0, 0, 0, 0, 0, 0.3,)  #Her bir parçanın ayrılma boyutu
+plt.title("py scores of names")  #Diyagramın başlığı
+tempData= {"name": ["Ahmet","Selin", "Rüzgar", "Sedat", "Zehra", "Deniz","Suat"],  #Diyagramın bilgileri.
+           "py.score" :[78.0, 79.0, 66.0, 80.0, 59.0, 61.0, 77.0]}
+           
+no = (1,2,3,4,5,6,7)
+dataFrame=pd.DataFrame(tempData,index=no)
+print(dataFrame)  #yapdığımız dataları  yazdırıyoruz.
+
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=-180)
+
+
+plt.show()  
+df.head(n=2) #İlk iki data gösteriliyor
+df.tail(n=2) ##Son iki data gösteriliyor
+cities = df['city'] #Veri çerçevesindeki bir sütuna, bir sözlükten bir değer alacağınız şekilde erişebiliriz.
+cities
+df.city
+cities[102] #Bir dizi nesnesinin tek bir öğesini, etiketini anahtar olarak kullanarak bir sözlükle yaptığınız gibi alabiliriz.
+df.loc[103] #Erişimci ile bütün bir satıra erişebilirsiniz .locname[]:
+import numpy as np
+import pandas as pd #Aşağıdaki örneklerde kullanacağınız Numpy ile birlikte Pandaları içe aktararak başlayabiliriz.
+d = {'x': [1, 2, 3], 'y': np.array([2, 4, 8]), 'z': 100} #Daha önce gördüğünüz gibi, bir python sözlüğü ile  pandalar DataFrame'i oluşturabiliriz.
+pd.DataFrame(d) #Sütunların sırasını columns parametresiyle ve satır etiketlerini index ile kontrol etmek mümkündür.
+pd.DataFrame(d, index=[100, 200, 300], columns=['z', 'y', 'x']) #Sütunların sırasını columns parametresiyle ve satır etiketlerini index ile kontrol etmek mümkündür
+l = [{'x': 1, 'y': 2, 'z': 100},
+     {'x': 2, 'y': 4, 'z': 100},
+     {'x': 3, 'y': 8, 'z': 100}]
+     pd.DataFrame(l)
